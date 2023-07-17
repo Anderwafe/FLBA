@@ -19,10 +19,19 @@ using System;
 using System.IO;
 using Microsoft.Extensions.Logging;
 
-namespace FLBA
+namespace FLBA.Extensions
 {
+    /// <summary>
+    /// Provides static method for the add FileLoggerProvider to specified LoggingBuilder
+    /// </summary>
     public static class FileLoggerExtensions
     {
+        /// <summary>
+        /// Add FileLoggerProvider with specified filePath to the builder
+        /// </summary>
+        /// <param name="builder">Logging builder object to attach FileLoggerProvider to</param>
+        /// <param name="filePath">File path for FileLoggerProvider</param>
+        /// <returns>builder with FileLoggerProvider</returns>
         public static ILoggingBuilder AddFile(this ILoggingBuilder builder, string filePath = null)
         {
             filePath ??= Path.Join(Environment.CurrentDirectory, ".log");

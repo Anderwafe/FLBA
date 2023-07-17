@@ -20,18 +20,33 @@ using Microsoft.Extensions.Logging;
 
 namespace FLBA
 {
+    /// <summary>
+    /// Provide method to create FileLogger object
+    /// </summary>
     public class FileLoggerProvider : ILoggerProvider
     {
         private string _filePath;
         
+        /// <summary>
+        /// Initialized new FileLoggerProvider object with specified file path
+        /// </summary>
+        /// <param name="filePath"></param>
         public FileLoggerProvider(string filePath)
         {
             _filePath = filePath;
         }
         
+        /// <summary>
+        /// Dont do anything
+        /// </summary>
         public void Dispose()
         { }
 
+        /// <summary>
+        /// Create new FileLogger instance with specified category name
+        /// </summary>
+        /// <param name="categoryName">category name</param>
+        /// <returns>FileLogger instance</returns>
         public ILogger CreateLogger(string categoryName)
         {
             return new FileLogger(_filePath, categoryName);

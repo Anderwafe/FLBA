@@ -20,10 +20,20 @@ using Microsoft.Extensions.Logging;
 
 namespace FLBA
 {
+    /// <summary>
+    /// Provides methods to log messages to file
+    /// </summary>
+    /// <typeparam name="T">Category name</typeparam>
     public class FileLogger<T> : FileLogger
     {
-        public FileLogger(string filePath, LogLevel logLevel = LogLevel.Warning) 
-            : base(filePath, typeof(T).Name, logLevel)
+        /// <summary>
+        /// Initialized new FileLogger object with specified file path
+        /// </summary>
+        /// <param name="filePath">Path to log file (it will be overwritten)</param>
+        /// <param name="autoWrite">Will the buffer be written to the file after each Log()</param>
+        /// <param name="logLevel">Current log level of the logger</param>
+        public FileLogger(string filePath, bool autoWrite = true, LogLevel logLevel = LogLevel.Warning) 
+            : base(filePath, typeof(T).Name, autoWrite, logLevel)
         {
             
         }
